@@ -88,4 +88,9 @@ interface PayBoxRequestParams {
      * Paybox time param.
      */
     const PBX_TIME = "PBX_TIME";
+
+    /**
+     * Paybox async answer url
+     */
+    const PBX_REPONDRE_A = "PBX_REPONDRE_A";
 }

@@ -62,9 +62,13 @@ class Api
         $fields[PayBoxRequestParams::PBX_IDENTIFIANT] = $this->options['identifiant'];
         $fields[PayBoxRequestParams::PBX_HASH] = $this->options['hash'];
         $fields[PayBoxRequestParams::PBX_RETOUR] = $this->options['retour'];
-        $fields[PayBoxRequestParams::PBX_TYPEPAIEMENT] = $this->options['type_paiement'];
-        $fields[PayBoxRequestParams::PBX_TYPECARTE] = $this->options['type_carte'];
         $fields[PayBoxRequestParams::PBX_HMAC] = strtoupper($this->computeHmac($this->options['hmac'], $fields));
+        if (!isset($fields[PayBoxRequestParams::PBX_TYPEPAIEMENT])) {
+            $fields[PayBoxRequestParams::PBX_TYPEPAIEMENT] = $this->options['type_paiement'];
+        }
+        if (!isset($fields[PayBoxRequestParams::PBX_TYPECARTE])) {
+            $fields[PayBoxRequestParams::PBX_TYPECARTE] = $this->options['type_carte'];
+        }
 
         $authorizeTokenUrl = $this->getAuthorizeTokenUrl();
         throw new HttpPostRedirect($authorizeTokenUrl, $fields);

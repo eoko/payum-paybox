@@ -34,6 +34,7 @@ class ConvertPaymentAction extends GatewayAwareAction
         $details[PayBoxRequestParams::PBX_EFFECTUE] = $token->getTargetUrl();
         $details[PayBoxRequestParams::PBX_ANNULE] = $token->getTargetUrl();
         $details[PayBoxRequestParams::PBX_REFUSE] = $token->getTargetUrl();
+        $details[PayBoxRequestParams::PBX_REPONDRE_A] = $token->getTargetUrl();
         $dateTime = date("c");
         $details[PayBoxRequestParams::PBX_TIME] = $dateTime;
 
